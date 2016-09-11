@@ -1,0 +1,60 @@
+.PageHeading {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 40px;
+	font-weight: bolder;
+	text-decoration: none;
+	font-style: normal;
+	font-variant: normal;
+	text-transform: none;
+	color: #0000FF;
+	position: fixed;
+	height: auto;
+	width: auto;
+	top: 0px;
+	bottom: auto;
+	background-color: #FFFFFF;
+	margin: auto;
+	text-align: center;
+	width: 100%;
+	border-spacing: 5%;
+	table-layout: auto;
+}
+.LoginForm {
+	font-size: medium;
+}
+.ClasesTable {	
+	background:white;
+	border-style: solid;
+	border-width: thin;
+	vertical-align: central;
+	border-collapse: collapse;
+	caption-side: top;
+	width: 75%;
+}
+html {
+	background-size: cover;
+	background: teal;
+	background: -webkit-linear-gradient(teal, pink);
+    background: -o-linear-gradient(teal, pink);
+    background: -moz-linear-gradient(teal, pink);
+    background: linear-gradient(teal, pink);
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
+}
+
+section{
+	margin:10% 5%;
+}
+body {
+	background:transparent;
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
+}
+header, footer {
+    padding: 0.5em;
+}
