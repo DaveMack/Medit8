@@ -32,7 +32,7 @@
 	width: 75%;
 }
 html {
-	background: images/PinkLotusLarge.jpeg;
+	background: "PinkLotusLarge.jpeg";
 	background-size: cover;
 	background-attachment: fixed;
 	background-position: center;
