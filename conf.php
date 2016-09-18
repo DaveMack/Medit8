@@ -1,9 +1,9 @@
 <?php
 //database configuration
-$host = 'localhost';
+$host = '127.0.0.1';
 $user = 'root';
 $pass = 'machowhizfish';
-$db = 'Medit8';
+$db = 'medit8';
 
 
 

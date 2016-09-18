@@ -25,13 +25,14 @@
 include('conf.php');
 //connecting to database
 $_connection = mysql_connect($host, $user, $pass) or die("Unable to connect to database.");
+echo var_dump($_connection);
 //selecting database
 mysql_select_db($db) or die("Unable to select database");
 //building database query
-$query = "SELECT * FROM `courses` ORDER BY `StartDate`";
+$query = "SELECT * FROM `Courses` ORDER BY `StartDate`";
 //querying server
 $result = mysql_query($query) or die("Error in query. ".mysql_error());
-
+echo var_dump($result);
 /////////////////////////
 //Learn to use PDO here//
 /////////////////////////
