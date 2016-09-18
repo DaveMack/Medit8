@@ -1,4 +1,4 @@
-.PageHeading {
+﻿.PageHeading {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 40px;
 	font-weight: bolder;
@@ -32,7 +32,7 @@
 	width: 75%;
 }
 html {
-	background-image: url("images/PinkLotusLarge.jpeg");
+	background-image: url("images/PinkLotusLarge.jpg");
 	background-size: cover;
 	background-attachment: fixed;
 	background-position: center;
