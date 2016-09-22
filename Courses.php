@@ -25,14 +25,13 @@
 include('conf.php');
 //connecting to database
 $_connection = mysql_connect($host, $user, $pass) or die("Unable to connect to database.");
-echo var_dump($_connection);
 //selecting database
 mysql_select_db($db) or die("Unable to select database");
 //building database query
 $query = "SELECT * FROM `Courses` ORDER BY `StartDate`";
 //querying server
 $result = mysql_query($query) or die("Error in query. ".mysql_error());
-echo var_dump($result);
+
 /////////////////////////
 //Learn to use PDO here//
 /////////////////////////
@@ -40,7 +39,13 @@ echo var_dump($result);
 //if query resulted in any rows
 if(mysql_num_rows($result) > 0){
     while($row = mysql_fetch_array($result)){
-        echo '<tr style="background-color: aqua">';
+    	//if the course is not open for enrolment
+    	if(strtotime( '-2 month' , strtotime ($row['StartDate'])) > time() ){
+        echo '<tr style="background-color: lightcyan">';}
+        elseif(strtotime ($row['StartDate']) > time() ){
+        echo '<tr style="background-color: lightgreen">';}
+        else{
+        echo '<tr style="background-color: lightcoral">';}
             echo '<td>'.$row['id'].'</td>';
             echo '<td>'.$row['Name'].'</td>';
             echo '<td>'.$row['Description'].'</td>';

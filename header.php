@@ -3,7 +3,7 @@
 
 <head>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-<title>Untitled 1</title>
+<title>Medit8 - NavBar</title>
 </head>
 
 <body>
@@ -21,16 +21,12 @@
 		<li><a href="Account.php">Account</a></li>
 		<li></li>
 	</ul>
-	
 	<form action="" method="POST">
-		<!--<label for="Username">Username</label>-->
 		<input name="Username" type="text" placeholder="Email"/>
-		<!--<label for="Password">Password</label>-->
 		<input name="Password" type="password" placeholder="Password"/>
 		<input name="LoginSubmit" type="submit" value="Login/Register" style="height:30px;"/> <br />
 		<br />
 	</form>
-
 </nav>
 
 </body>

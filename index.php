@@ -19,19 +19,16 @@
 	compassionate and awakened individuals.The mission of Medit8 is to 
 	offer understanding, realization, and embodiment of the teachings of 
 	the Buddha integrated with a modern, progressive scientific perspective.</p>
-	<br />
+	
 	<p>Welcome!  We are a community of people interested in Buddhism 
 	and meditation.  We regularly meet to learn about the Dharma and 
-	meditate under our qualified teachers.</p>
-	<br />
-	<p>What students appreciate most about the school's teachings is 
-	the incredible clarity, detail, and depth of knowledge that he brings 
-	to teaching meditation and Buddhism.</p>
-	<br />
-	<p>Medit8 is a non-profit organisation and we rely solely on the 
+	meditate under our qualified teachers. What students appreciate most 
+	about the school's teachings is the incredible clarity, detail, and 
+	depth of knowledge that he brings to teaching meditation and Buddhism. 
+	Medit8 is a non-profit organisation and we rely solely on the 
 	donations of generous previous students which means we offer our 
 	courses completely free!</p>
-	<br />
+	
 	<p>Our ashram is located in an area of incredible natural beauty 
 	and is kept tucked well away from the humdrum of modern life. 
 	We offer a number of courses with a 10 day course for beginers and 3, 10 and 30 day courses for more experienced 
@@ -39,7 +36,6 @@
 	vounters who have dedicated time to help with running the school. All courses 
 	are kept gender segregated to ensure your time is free from distraction and 
 	accomodation and parking is provided.</p>
-	<br />
 </article>
 
 </body>
