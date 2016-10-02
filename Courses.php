@@ -28,7 +28,7 @@ $_connection = mysql_connect($host, $user, $pass) or die("Unable to connect to d
 //selecting database
 mysql_select_db($db) or die("Unable to select database");
 //building database query
-$query = "SELECT * FROM `Courses` ORDER BY `StartDate`";
+$query = "SELECT * FROM `courses` ORDER BY `StartDate`";
 //querying server
 $result = mysql_query($query) or die("Error in query. ".mysql_error());
 
@@ -51,7 +51,7 @@ if(mysql_num_rows($result) > 0){
             echo '<td>'.$row['Description'].'</td>';
             echo '<td>Enrollment opens: '.date ( 'd-m-Y', strtotime( '-2 month' , strtotime ($row['StartDate']))).'<br />';
             echo 'Course starts: '.date ( 'd-m-Y', strtotime($row['StartDate'])).'<br/>';
-            echo 'Course ends: '.date( 'd-m-Y', strtotime('+'.$row['Duration'].' day', strtotime($row['StartDate']))).'</td>';
+            echo 'Course ends: '.date( 'd-m-Y', strtotime('+'.$row['Duration'].' day', strtotime($row['StartDate']))).'<input name="Button1" type="button" value="enrol" /></td>';
         echo '</tr>';
     }
 }
