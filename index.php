@@ -15,7 +15,7 @@
 <!--Page content-->
 <article>
 	<h1>About</h1>
-	<p>The vision of Medit8 is a humane, balanced, global community of 
+	<p>The vision of Medit8 is a humane, balanced, inter-global community of 
 	compassionate and awakened individuals.The mission of Medit8 is to 
 	offer understanding, realization, and embodiment of the teachings of 
 	the Buddha integrated with a modern, progressive scientific perspective.</p>
