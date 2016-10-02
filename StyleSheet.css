@@ -31,8 +31,8 @@
 
 }
 html {
-	background-image: url("images/PinkLotusLarge.jpg");
-	background-size: cover;
+	background-image: url("images/BushlandBackground.jpg");
+	background-size:100% auto;
 	background-attachment: fixed;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -41,20 +41,20 @@ html {
 	padding: 0px;
 }
 header {
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 40px;
+	font-family: Arial;
+	font-size: 60px;
 	font-weight: bolder;
-	text-decoration: none;
 	font-style: normal;
 	font-variant: normal;
 	text-transform: none;
-	color: #0000FF;
+	background-attachment:fixed;
+	color: darkblue;
 	position: fixed;
-	height: 80px;
-	width: auto;
-	top: 0px;
+	height:110px;
+	top: -20px;
 	bottom: auto;
-	background-color: #FFFFFF;
+	background-image: url("images/BushlandBackground.jpg");
+	background-size:100% auto;
 	margin: auto;
 	text-align: center;
 	width: 100%;
@@ -63,7 +63,7 @@ header {
 	padding: 0.5em;
 }
 nav {
-	background:silver;
+	background:transparent;
     position: fixed;
     top: 72px;
     left: 0;
@@ -80,19 +80,25 @@ nav ul{
 }
 nav li{
 	float:left;
+	
 }
 nav a:hover{
-	background:gray;
+	background-color:lightblue;
 }
 nav a{
+	box-shadow:3px 3px 2px lightgrey;
   	text-decoration: none;
+  	background-color: lightcyan;
   	color: black;
 	display: block;
 	font-size:x-large;
-    padding:15px;
+    padding:7px;
+    margin:25px;
+    border-radius: 25px
 }
 nav form:{
 	float:right;
+	margin:200px 20px 20px 20px;
 }
 nav input{
 	height:20px;
