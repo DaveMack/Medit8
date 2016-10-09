@@ -11,6 +11,8 @@
 <body>
 <!--Imports the website header-->
 <?php include 'header.php' ?>
+
+<!--Creating the table of classes. This uses php to write dynamic HTML-->
 	<table class="ListTable">
 		<caption class="Caption">Classes</caption>
 		<tr>
@@ -32,20 +34,22 @@ $query = "SELECT * FROM `courses` ORDER BY `StartDate`";
 //querying server
 $result = mysql_query($query) or die("Error in query. ".mysql_error());
 
-/////////////////////////
-//Learn to use PDO here//
-/////////////////////////
-
 //if query resulted in any rows
 if(mysql_num_rows($result) > 0){
     while($row = mysql_fetch_array($result)){
-    	//if the course is not open for enrolment
+    	//if the course is not yet open for enrolment
     	if(strtotime( '-2 month' , strtotime ($row['StartDate'])) > time() ){
         echo '<tr style="background-color: lightcyan">';}
+        
+        //if enrolment is closed
         elseif(strtotime ($row['StartDate']) > time() ){
         echo '<tr style="background-color: lightgreen">';}
+        
+        //the only other option is that enrolment is closed
         else{
         echo '<tr style="background-color: lightcoral">';}
+        
+        //Creating the table row using the parameters set in the previous conditional
             echo '<td>'.$row['id'].'</td>';
             echo '<td>'.$row['Name'].'</td>';
             echo '<td>'.$row['Description'].'</td>';
