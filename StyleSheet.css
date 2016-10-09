@@ -1,4 +1,13 @@
-﻿.ListTable {	
+﻿/*
+Any style that does not begin with a period is automatically assigned to the appropriate html tag, (e.g. header will be assigned to all headers)
+Any style that begins with a period (e.g. .ListTable) must be manually assigned to a html element using style="StyleName" (e.g. style="ListTable") this will overide automatic styles
+
+Any characters other than letters and numbers in the names of styles are modifiers (including white space). 
+The most common is white space which indicates all X within Y where it is writen "Y X{}" e.g. nav ul{} will be applied to all ul (unordered list) elements within nav (the navigation bar).
+Another important modifier is ":" which indicates X when Y occus where it is writen X:Y. e.g. a:hover which will be applied when the mouse hovers over "a" (hyperlink) elements.
+*/
+
+.ListTable {	
 	background:white;
 	border-style: solid;
 	border-color: black;

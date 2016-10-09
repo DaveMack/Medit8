@@ -7,11 +7,14 @@
 </head>
 
 <body>
-
+<!--This is the header which will be displayed on every page-->
 <header>
 	Medit8 School for Zen Life Improvement
 </header>
+
+<!--This is the nav bar which is located directly under the header-->
 <nav>
+	<!--These are the buttons which are used for navigation-->
 	<ul>
 		<li></li>
 		<li><a href="index.php">Home</a></li>
@@ -21,6 +24,8 @@
 		<li><a href="Account.php">Account</a></li>
 		<li></li>
 	</ul>
+	
+	<!--This is the login form-->
 	<form action="" method="POST">
 		<input name="Username" type="text" placeholder="Email"/>
 		<input name="Password" type="password" placeholder="Password"/>

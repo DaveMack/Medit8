@@ -11,6 +11,8 @@
 <body>
 <!--Imports the website header-->
 <?php include 'header.php' ?>
+
+<!--Page content-->
 <article>Medit8 relies on the donations of generous students in order to offer our courses for free. 
 If you would like to contribute to helping us run the school please call 1800-Medit8</article>
 
