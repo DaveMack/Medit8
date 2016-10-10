@@ -21,7 +21,7 @@
 		<li><a href="Courses.php">Courses</a></li>
 		<li><a href="WaysToGive.php">Ways to Give</a></li>
 		<li><a href="Directions.php">Direction</a></li>
-		<li><a href="Account.php">Account</a></li>
+		<li><a href="register.php">Account</a></li>
 		<li></li>
 	</ul>
 	
