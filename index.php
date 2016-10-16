@@ -11,7 +11,9 @@
 <body>
 <!--Imports the website header-->
 <?php include 'header.php' ?>
-
+	<br />
+	<br />
+	<br />
 <!--Page content-->
 <article>
 	<h1>About</h1>

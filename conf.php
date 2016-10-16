@@ -1,7 +1,14 @@
 <?php
+
+session_start();
 //database configuration
-$host = '127.0.0.1';//Since php is run on the server and so is the database we can just use the localhost
-$user = 'root';//root user
-$pass = 'machowhizfish';//password
-$db = 'medit8';//database to be connected to
+$host = '127.0.0.1';
+$user = 'root';
+$pass = 'machowhizfish';
+$db = 'medit8';
+
+mysql_connect($host, $user, $pass) or die("MySQL Error: " . mysql_error());
+mysql_select_db($db) or die("MySQL Error: " . mysql_error());
+
+
 ?>
