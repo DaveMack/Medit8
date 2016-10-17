@@ -20,11 +20,18 @@ Lockyer National Park. This out-of-the-way location is perfect for those wanting
 <script>
 	var map;
 	function initMap() {
+	var myLatLng = {lat: -27.465158, lng: 152.187860};
 	map = new google.maps.Map(document.getElementById('map'), 
 		{
-		center: {lat: -27.465158, lng: 152.187860},
-		zoom: 8
+		center: myLatLng,
+		zoom: 9
 		});
+		var marker = new google.maps.Marker({
+    	position: myLatLng,
+        map: map,
+        title: 'Medit8 School!'
+        });
+
     }
 </script>
 
