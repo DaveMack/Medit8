@@ -5,6 +5,7 @@
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 <title>Medit8 - NavBar</title>
 <?php include 'conf.php' ?>
+<?php //include 'testLogin.php' ?>
 </head>
 
 <body>
@@ -19,10 +20,10 @@
 			}
 			elseif(!empty($_POST['Email']) && !empty($_POST['Password']))
 			{
-			    $email = mysql_real_escape_string($_POST['Email']);
+			    $email = str_replace ('.', '_', mysql_real_escape_string($_POST['Email']));
 			    $password = md5(mysql_real_escape_string($_POST['Password']));
 			     
-			    $checklogin = mysql_query("SELECT * FROM accounts WHERE Email = '".$email."' AND Password = '".$password."'");
+			    $checklogin = mysql_query("SELECT * FROM accounts WHERE Email LIKE '".$email."' AND Password = '".$password."'");
 			     
 			    if(mysql_num_rows($checklogin) == 1)
 			    {
