@@ -24,7 +24,9 @@
 			    $password = md5(mysql_real_escape_string($_POST['Password']));
 			     
 			    $checklogin = mysql_query("SELECT * FROM accounts WHERE Email LIKE '".$email."' AND Password = '".$password."'");
-			     
+			    $age = mysql_fetch_array($checklogin)['Age'];
+			    $gender = mysql_fetch_array($checklogin)['Gender'];
+
 			    if(mysql_num_rows($checklogin) == 1)
 			    {
 			        $row = mysql_fetch_array($checklogin);
@@ -33,6 +35,9 @@
 			        $_SESSION['username'] = $username;
 			        $_SESSION['EmailAddress'] = $email;
 			        $_SESSION['LoggedIn'] = 1;
+			        $_SESSION['age'] = age;
+					$_SESSION['gender'] = gender;
+
 			    	 ?>
 			 
 			 		<a href="logout.php">Logout <?=$_SESSION['username']?></a>
