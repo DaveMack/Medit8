@@ -39,7 +39,8 @@ $maleAllocations = 0;
 if(mysql_num_rows($courses) > 0){
     while($row = mysql_fetch_array($courses)){
     	//if the user has a gender assigned
-    	if($_SESSION['LoggedIn'] == 1 || $_SESSION['gender'] != NULL){
+
+    	if(isset($_SESSION) && $_SESSION['LoggedIn'] == 1 && $_SESSION['gender'] != NULL){
     	
     		//get the age group for the course and the user's gender
     		$ageQuery = "SELECT min(age) as min_age, max(age) as max_age FROM accounts INNER JOIN allocations ON accounts.email=allocations.account WHERE Gender=".$_SESSION['gender']." AND Course =".(string)$row['id'];
@@ -124,23 +125,26 @@ if(mysql_num_rows($courses) > 0){
     		    		
     		//if both the male and female dorms are full
         	if($maleAllocations > 25 && $femaleAllocations > 25){
+        		$registerable = 0; //-1 = closed, 0 = will be open in the future or is full, 1 = open;
         		echo '<tr style="background-color: lightcoral">';}
 	
 	        //if enrolment is open
 	        elseif(strtotime ($row['StartDate']) > time() && strtotime( '-2 month' , strtotime ($row['StartDate'])) < time() ){
+	        	$registerable = 1;
 	        	echo '<tr style="background-color: lightgreen">';}
 	        
         	//if the course is not yet open for enrolment
     		elseif(strtotime( '-2 month' , strtotime ($row['StartDate'])) > time() ){
+    		$registerable = 0;
         		echo '<tr style="background-color: lightcyan">';}
 
         
 	        //the only other option is that enrolment is closed
 	        else{
+	        	$registerable = -1;
 	        	echo '<tr style="background-color: lightcoral">';}
 	        
 	        //Creating the table row using the parameters set in the previous conditional
-	        	    echo '<td>'.$row['id'].'</td>';
 	        	    echo '<td>'.$row['Name'].'</td>';
 	        	    echo '<td>'.$row['Description'];
 	        	    if($femaleAllocations > 25){echo ' Female dorm is full.';}
@@ -149,8 +153,11 @@ if(mysql_num_rows($courses) > 0){
 	    	        echo '<td>Enrollment opens: '.date ( 'd-m-Y', strtotime( '-2 month' , strtotime ($row['StartDate']))).'<br />';
 	    	        echo 'Course starts: '.date ( 'd-m-Y', strtotime($row['StartDate'])).'<br/>';
 	    	        echo 'Course ends: '.date( 'd-m-Y', strtotime('+'.$row['Duration'].' day', strtotime($row['StartDate'])));
-	    	        if($numberOfAllocations > 25){echo '<input name="MailButton" type="button" value="Join mailing list" />';}
-	    	        else{echo '<input name="EnrolButton" type="button" value="Enrol in course" />';}
+	    	        echo '</td>';
+	    	        echo '<td>';
+	    	        if($registerable == -1){echo 'Course registration closed.';}
+	    	        elseif($registerable == 0){echo 'Course registration not currently open.';}
+	    	        else{echo 'Course registration open.';}
 	    	        echo '</td>';
 	        	echo '</tr>';
 	    	}

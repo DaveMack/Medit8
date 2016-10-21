@@ -11,7 +11,7 @@
 <body>
 <!--Imports the website header-->
 <?php include 'header.php' ?>
-
+<article>
 <?php
 //including configuration file
 include('conf.php');
@@ -20,12 +20,26 @@ $_connection = mysql_connect($host, $user, $pass) or die("Unable to connect to d
 //selecting database
 mysql_select_db($db) or die("Unable to select database");
 //building database query
-$Email = mysql_real_escape_string($_SESSION['EmailAddress']);
-$Course = $_POST['course'];
-if($_SESSION['gender'] == 0){$Room = 2;} else{$Room = 1;}
-$registerQuery = "INSERT INTO `allocations` (`id`, `Course`, `Account`, `Room`) VALUES (Null, '".$Email ."', '".$Course ."', '".$Room ."')" or die("Error in query. ".mysql_error()) ;
-echo 'Registered for course'
+if($_SESSION['LoggedIn'] == 1){
+	$SelectEmail = mysql_real_escape_string($_SESSION['EmailAddress']);//example@example_com
+	$Email = str_replace ('_', '',$SelectEmail);
+	$Course = $_POST['course'];
+	if($_SESSION['gender'] == 0){$Room = 2;} else{$Room = 1;}
+	$checkQuery = "SELECT * FROM `allocations` WHERE `Course` LIKE '".$Course."'AND `Account` LIKE '".$SelectEmail."';";
+	$checkResult = mysql_query($checkQuery) or die("Error in query. ".mysql_error());
+	if(mysql_num_rows($checkResult) > 0){
+		echo 'Failed to register for course: you are already registered for this course.';
+	}
+	else{
+		$registerQuery = "INSERT INTO `allocations` (`id`, `Course`, `Account`, `Room`) VALUES (Null, '".$Course."', '".$Email."', '".$Room ."');";
+		var_dump($registerQuery);
+		$registerResult = mysql_query($registerQuery) or die("Error in query. ".mysql_error());
+		echo 'Registered for course';
+	}
+}
+else{echo 'You aren\'t logged in! Why are you even on this page?';}
 ?>
+</article>
 </body>
 
 </html>
