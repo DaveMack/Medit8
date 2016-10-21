@@ -20,7 +20,7 @@ $_connection = mysql_connect($host, $user, $pass) or die("Unable to connect to d
 //selecting database
 mysql_select_db($db) or die("Unable to select database");
 //building database query
-if($_SESSION['LoggedIn'] == 1){
+if($_SESSION['LoggedIn'] == 1 && $_POST['course'] > 0){
 	$SelectEmail = mysql_real_escape_string($_SESSION['EmailAddress']);//example@example_com
 	$Email = str_replace ('_', '',$SelectEmail);
 	$Course = $_POST['course'];
@@ -32,9 +32,8 @@ if($_SESSION['LoggedIn'] == 1){
 	}
 	else{
 		$registerQuery = "INSERT INTO `allocations` (`id`, `Course`, `Account`, `Room`) VALUES (Null, '".$Course."', '".$Email."', '".$Room ."');";
-		var_dump($registerQuery);
-		$registerResult = mysql_query($registerQuery) or die("Error in query. ".mysql_error());
-		echo 'Registered for course';
+				$registerResult = mysql_query($registerQuery) or die("Error in query. ".mysql_error());
+		echo 'Successfully registered for course';
 	}
 }
 else{echo 'You aren\'t logged in! Why are you even on this page?';}
