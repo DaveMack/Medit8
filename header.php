@@ -9,6 +9,7 @@
 </head>
 
 <body>
+
 	<header>
 			<?php
 			if(!empty($_SESSION['LoggedIn']) && !empty($_SESSION['EmailAddress']))
@@ -24,9 +25,10 @@
 			    $password = md5(mysql_real_escape_string($_POST['Password']));
 			     
 			    $checklogin = mysql_query("SELECT * FROM accounts WHERE Email LIKE '".$email."' AND Password = '".$password."'");
-			    $age = mysql_fetch_array($checklogin)['Age'];
-			    $gender = mysql_fetch_array($checklogin)['Gender'];
-
+			    //please note that mysql_fetch_array can only be called once on a given query. The output can be reused as it is just an array.
+			    $userDetails = mysql_fetch_array($checklogin);
+			    $age = $userDetails['Age'];
+			    $gender = $userDetails['Gender'];
 			    if(mysql_num_rows($checklogin) == 1)
 			    {
 			        $row = mysql_fetch_array($checklogin);
@@ -35,18 +37,19 @@
 			        $_SESSION['username'] = $username;
 			        $_SESSION['EmailAddress'] = $email;
 			        $_SESSION['LoggedIn'] = 1;
-			        $_SESSION['age'] = age;
-					$_SESSION['gender'] = gender;
+			        $_SESSION['age'] = $age;
+					$_SESSION['gender'] = $gender;
 
 			    	 ?>
-			 
+			 		
+
 			 		<a href="logout.php">Logout <?=$_SESSION['username']?></a>
 			    	<?php 
 			    }
 			    else
 			    {
 			        echo "<h1>Error</h1>";
-			        echo "<p>Sorry, your account could not be found. Please <a href=\"index.php\">click here to try again</a>.</p>";
+			        echo "<p>Sorry, no account was found with that username and/or password. Please <a href=\"index.php\">click here to try again</a>.</p>";
 			    }
 			}
 			else
@@ -59,7 +62,6 @@
 	    	 ?>	
 
 		Medit8 School for Zen Life Improvement
-
 	</header>
 
 	<nav>
@@ -98,6 +100,7 @@
         <label for="Password">Password:</label><input type="Password" name="Password" id="Password" /><br />
         <input type="submit" name="login" id="login" value="Login" />
     </fieldset>
+    </form>
     </div>
     <div class="modal-footer">
       <h3>Medit8 Member Login Footer</h3>
