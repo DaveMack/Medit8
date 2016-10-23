@@ -16,13 +16,14 @@
 //including configuration file
 include('conf.php');
 //connecting to database
-$_connection = mysql_connect($host, $user, $pass) or die("Unable to connect to database.");
+//$_connection = mysql_connect($host, $user, $pass) or die("Unable to connect to database.");
 //selecting database
-mysql_select_db($db) or die("Unable to select database");
+//mysql_select_db($db) or die("Unable to select database");
 //building database query
 if($_SESSION['LoggedIn'] == 1 && $_POST['course'] > 0){
-	$SelectEmail = mysql_real_escape_string($_SESSION['EmailAddress']);//example@example_com
-	$Email = str_replace ('_', '',$SelectEmail);
+	$Email = mysql_real_escape_string($_SESSION['EmailAddress']);//example@example_com
+	$SelectEmail = str_replace ('.', '_',$SelectEmail);
+
 	$Course = $_POST['course'];
 	if($_SESSION['gender'] == 0){$Room = 2;} else{$Room = 1;}
 	$checkQuery = "SELECT * FROM `allocations` WHERE `Course` LIKE '".$Course."'AND `Account` LIKE '".$SelectEmail."';";
@@ -33,7 +34,14 @@ if($_SESSION['LoggedIn'] == 1 && $_POST['course'] > 0){
 	else{
 		$registerQuery = "INSERT INTO `allocations` (`id`, `Course`, `Account`, `Room`) VALUES (Null, '".$Course."', '".$Email."', '".$Room ."');";
 				$registerResult = mysql_query($registerQuery) or die("Error in query. ".mysql_error());
-		echo 'Successfully registered for course';
+		echo "Successfully registered ".$Email." for course";
+		$subject = 'Your enrolment';
+		$message = 'You enrolled in something.  Good for you!';
+		$headers = 'From: webmaster@medit8.com' . "\r\n" .
+		'Reply-To: webmaster@medit8.com' . "\r\n" .
+		'X-Mailer: PHP/' . phpversion();
+
+		mail($Email, $subject, $message, $headers);
 	}
 }
 else{echo 'You aren\'t logged in! Why are you even on this page?';}

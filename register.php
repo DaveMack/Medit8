@@ -34,6 +34,13 @@ if(!empty($_POST['Email']) && !empty($_POST['Password']))
         {
             echo "<h1>Success</h1>";
             echo "<p>Your account was successfully created. Please <a href=\"index.php\">click here to login</a>.</p>";
+	   $subject = 'Your Account';
+	   $message = 'Your Medit8 account was created successfully.';
+	   $headers = 'From: webmaster@medit.com' . "\r\n" . 
+		'Reply-To: webmaster@medit8.com' . "\r\n" .
+		'X-Mailer: PHP/' . phpversion();
+	   mail($email, $subject, $message, $headers);
+	  $_SESSION['EmailAddress'] = $email;
         }
         else
         {

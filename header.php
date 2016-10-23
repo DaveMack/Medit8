@@ -16,7 +16,7 @@
 			{
 			     ?>
 			 
-			 		<a href="logout.php">Logout <?=$_SESSION['username']?></a>
+			 		<a href="logout.php">Logout <?=$_SESSION['EmailAddress']?></a>
 			    <?php
 			}
 			elseif(!empty($_POST['Email']) && !empty($_POST['Password']))
@@ -34,16 +34,16 @@
 			        $row = mysql_fetch_array($checklogin);
 			        $username = $row['Name'];
 			         
-			        $_SESSION['username'] = $username;
-			        $_SESSION['EmailAddress'] = $email;
+			        $_SESSION['Username'] = $username;
+			        $_SESSION['EmailAddress'] = mysql_real_escape_string($_POST['Email']);
 			        $_SESSION['LoggedIn'] = 1;
 			        $_SESSION['age'] = $age;
-					$_SESSION['gender'] = $gender;
+				$_SESSION['gender'] = $gender;
 
 			    	 ?>
 			 		
 
-			 		<a href="logout.php">Logout <?=$_SESSION['username']?></a>
+			 		<a href="logout.php">Logout <?=$_SESSION['EmailAddress']?></a>
 			    	<?php 
 			    }
 			    else
