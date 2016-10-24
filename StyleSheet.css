@@ -74,13 +74,12 @@ header {
 nav {
 	background:transparent;
     position: fixed;
-    top: 17px;
+    top: 40px;
     left: 0;
     right: 0;
     bottom: 0;
     min-width: 800px;
     text-align: center;
-    height: 57px;
 }
 nav ul{
 	list-style-type: none;
@@ -102,7 +101,7 @@ nav a{
 	display: block;
 	font-size:x-large;
     padding:7px;
-    margin:10px;
+    margin:0px 10px 10px 10px;
     border-radius: 25px
 }
 nav form:{
