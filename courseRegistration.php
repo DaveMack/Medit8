@@ -22,7 +22,7 @@ include('conf.php');
 //building database query
 if($_SESSION['LoggedIn'] == 1 && $_POST['course'] > 0){
 	$Email = mysql_real_escape_string($_SESSION['EmailAddress']);//example@example_com
-	$SelectEmail = str_replace ('.', '_',$SelectEmail);
+	$SelectEmail = str_replace ('.', '_',$Email);
 
 	$Course = $_POST['course'];
 	if($_SESSION['gender'] == 0){$Room = 2;} else{$Room = 1;}

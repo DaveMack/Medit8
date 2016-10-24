@@ -39,9 +39,9 @@ $maleAllocations = 0;
 if(mysql_num_rows($courses) > 0){
     while($row = mysql_fetch_array($courses)){
     	//if the user has a gender assigned
-
-    	if(isset($_SESSION) && $_SESSION['LoggedIn'] == 1 && $_SESSION['gender'] != NULL){
-    	
+		if( isset($_SESSION) && isset($_SESSION['LoggedIn'])){
+    	if($_SESSION['LoggedIn'] == 1 && $_SESSION['gender'] != NULL){
+    		$registerable = 0;
     		//get the age group for the course and the user's gender
     		$ageQuery = "SELECT min(age) as min_age, max(age) as max_age FROM accounts INNER JOIN allocations ON accounts.email=allocations.account WHERE Gender=".$_SESSION['gender']." AND Course =".(string)$row['id'];
     		$ageResult =  mysql_fetch_array(mysql_query($ageQuery)) or die("Error in query. ".mysql_error());
@@ -53,9 +53,25 @@ if(mysql_num_rows($courses) > 0){
     		$allocationsQuery = "SELECT COUNT('Gender') FROM accounts INNER JOIN allocations ON accounts.email=allocations.account WHERE Gender=".$_SESSION['gender']." AND Course =".(string)$row['id'];
     		$allocationsResult = mysql_query($allocationsQuery) or die("Error in query. ".mysql_error());
     		$numberOfAllocations = mysql_fetch_array($allocationsResult)["COUNT('Gender')"];
-    	
+    		
+    		//check if user is enroled in course
+    		$Email = mysql_real_escape_string($_SESSION['EmailAddress']);//example@example_com
+			$SelectEmail = str_replace ('.', '_',$Email);
+
+			$Course = (string)$row['id'];
+			$checkQuery = "SELECT * FROM `allocations` WHERE `Course` LIKE '".$Course."'AND `Account` LIKE '".$SelectEmail."';";
+			$checkResult = mysql_query($checkQuery) or die("Error in query. ".mysql_error());
+			if(mysql_num_rows($checkResult) > 0){
+				$registerable = 2;
+			}
+			
+			//if the user is registered
+			if($registerable == 2){
+			echo var_dump($registerable);
+			echo '<tr style="background-color: lightcyan">';}
+
 			//if the dorm appropriate to the user's gender is full
-        	if($numberOfAllocations > 25){
+        	elseif($numberOfAllocations > 25){
         		$registerable = 0; //-1 = closed, 0 = will be open in the future or is full, 1 = open;
         		echo '<tr style="background-color: lightcoral">';}
 	
@@ -104,9 +120,11 @@ if(mysql_num_rows($courses) > 0){
     						echo '<input name="EnrolButton" type="submit" value="Enrol in course"/>';
 						echo '</form>';
 	    	        }
+	    	        elseif($registerable == 2){echo 'You are already registered for this course.';}
 	    	        else{echo 'Course registration closed.';}
 	    	        echo '</td>';
 	        	echo '</tr>';
+	    }
 	    }
 	    
 	    	    
