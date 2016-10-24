@@ -70,19 +70,17 @@ header {
 	border-spacing: 5%;
 	table-layout: auto;
 	padding: 0.5em;
-    border: 1px solid powderblue;
 }
 nav {
 	background:transparent;
     position: fixed;
-    top: 72px;
+    top: 17px;
     left: 0;
     right: 0;
     bottom: 0;
     min-width: 800px;
     text-align: center;
     height: 57px;
-    border: 1px solid red;
 }
 nav ul{
 	list-style-type: none;
@@ -91,7 +89,6 @@ nav ul{
 }
 nav li{
 	float:left;
-    border: 1px solid green;
 	
 }
 nav a:hover{
@@ -105,7 +102,7 @@ nav a{
 	display: block;
 	font-size:x-large;
     padding:7px;
-    margin:25px;
+    margin:10px;
     border-radius: 25px
 }
 nav form:{
@@ -124,14 +121,12 @@ article{
 	float: left;
 	width: 60%;
 	padding:10px;
-    border: 1px solid red;
 }
 body {
 	background:transparent;
 	height: 100%;
 	margin: 0px;
 	padding: 0px;
-    border: 1px solid black;
 }
 footer {
     padding: 0.5em;
