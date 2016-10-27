@@ -1,2 +1,5 @@
 Wikipedia - Australian Bushland Photo
 https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/NewEnglandNP.jpg/300px-NewEnglandNP.jpg
+
+Google - Google Maps API
+https://developers.google.com/maps/
